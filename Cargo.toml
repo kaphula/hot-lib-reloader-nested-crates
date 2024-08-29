@@ -1,23 +1,3 @@
 [workspace]
 resolver = "2"
-members = ["systems", "components"]
-
-[package]
-name = "bin"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-bevy_ecs = { version = "0.14.1" }
-components = { path = "components" }
-hot-lib-reloader = { version = "0.7.0", optional = true }
-rand = "0.8.5"
-systems = { path = "systems" }
-
-[features]
-default = []
-reload = [
-  "dep:hot-lib-reloader",
-  # Make sure that the types don't change:
-  # This is important on windows for avoiding file locking issues:
-]
+members = ["main/src/systems", "main/src/components" , "main"]

@@ -13,7 +13,7 @@ use systems_hot::*;
 mod systems_hot {
     use bevy_ecs::prelude::*;
     pub use components::*;
-    hot_functions_from_file!("systems/src/lib.rs");
+    hot_functions_from_file!("main/src/systems/src/lib.rs");
 }
 
 fn main() {
