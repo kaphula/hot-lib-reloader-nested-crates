@@ -8,8 +8,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-bevy = { version = "0.14.1" }
-bevy_dylib = "0.14.1"
+bevy_ecs = { version = "0.14.1" }
 components = { path = "components" }
 hot-lib-reloader = { version = "0.7.0", optional = true }
 rand = "0.8.5"
@@ -20,7 +19,5 @@ default = []
 reload = [
   "dep:hot-lib-reloader",
   # Make sure that the types don't change:
-  "components/dynamic",
   # This is important on windows for avoiding file locking issues:
-  "bevy/dynamic_linking",
 ]

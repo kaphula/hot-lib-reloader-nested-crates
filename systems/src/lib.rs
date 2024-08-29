@@ -1,18 +1,14 @@
 mod utilities;
 
-use bevy::{prelude::*};
+use bevy_ecs::{prelude::*};
 use components::*;
 use rand::{thread_rng, Rng};
 
-pub fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
-    commands.spawn(Camera2dBundle::default());
-
+pub fn setup(mut commands: Commands) {
     // player
 
     commands.spawn(Player {
-        velocity: Vec3::ZERO,
         rotation_speed: f32::to_radians(180.0),
-        shooting_timer: None,
     });
 }
 
@@ -22,7 +18,7 @@ pub fn bullet_hit_system(
     bullet_query: Query<&Player>,
 ) {
     for player in bullet_query.iter() {
-        println!("rotta {}", player.velocity)
+        println!("jokeri {}", player.rotation_speed)
     }
 }
 
