@@ -1,4 +1,4 @@
-use bevy_ecs::prelude::Component;
+use bevy_ecs::prelude::{Component, Resource};
 
 #[derive(Component)]
 pub struct OtherShip;
@@ -11,4 +11,13 @@ pub struct Bullet;
 pub struct Player {
     // pub movement_speed: f32,
     pub rotation_speed: f32,
+}
+
+
+
+/// player component
+#[derive(Resource)]
+pub struct BevyResource {
+    // pub movement_speed: f32,
+    pub x: f32,
 }

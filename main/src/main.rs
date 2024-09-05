@@ -1,6 +1,6 @@
 use std::thread;
 use std::time::Duration;
-use components::Player;
+use components::{BevyResource, Player};
 use bevy_ecs::prelude::*;
 use bevy_ecs::system::RunSystemOnce;
 
@@ -24,6 +24,8 @@ use systems_hot::*;
     lib_dir = concat!(env!("CARGO_MANIFEST_DIR"), "/../target/debug")
 
 )]
+
+
 mod systems_hot {
     use bevy_ecs::prelude::*;
     pub use components::*;
@@ -36,8 +38,16 @@ fn main() {
         rotation_speed: 0.0,
     });
 
+    world.insert_resource(BevyResource { x: 0.0 });
+
     loop {
+
         world.run_system_once(bevy_print_message_system);
+
+        // Comment this out and test working hot-reloading with the [bevy_print_message_system] function.
+        // Hot-reloading this function crashes the program:
+        bevy_resource_test(&mut world);
+
         thread::sleep(Duration::from_millis(400));
     }
 }

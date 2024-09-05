@@ -6,6 +6,8 @@ Run the following commands and change [main/src/systems/src/lib.rs](main/src/sys
 # run dynamic library watcher in background:
 cargo watch -w "main/src/systems" -w "main/src/components" -x "build -p systems" &
 
+sleep 5
+
 # run the main program with hot-reloading feature enabled:
 cargo run --features reload
 ```

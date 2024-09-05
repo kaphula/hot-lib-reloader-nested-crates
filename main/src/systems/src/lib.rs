@@ -1,4 +1,5 @@
 use bevy_ecs::{prelude::*};
+use bevy_ecs::system::SystemState;
 use components::*;
 
 pub fn setup(mut commands: Commands) {
@@ -9,11 +10,22 @@ pub fn setup(mut commands: Commands) {
 
 #[no_mangle]
 pub fn bevy_print_message_system(
-    mut commands: Commands,
     bullet_query: Query<&Player>,
 ) {
     for player in bullet_query.iter() {
-        println!("change this text during runtime {}", player.rotation_speed)
+        println!(" this text during runtime {}", player.rotation_speed)
     }
 }
 
+
+#[no_mangle]
+pub fn bevy_resource_test(
+    world: &mut World
+) {
+    let mut ss = SystemState::<(
+        ResMut<BevyResource>
+    )>::new(world);
+
+    let (mut res) = ss.get_mut(world);
+    res.x = 520.0;
+}
